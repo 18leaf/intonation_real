@@ -57,8 +57,9 @@ def analyze_audio(samples):
     """
     sample_rate = 41000
     window_size = 2048
-    hop_size
+    hop_size = 512
     analyzed_data = []
+    for i in range(0, len(samples) - window_size, hop_size)
     # Implement your code to analyze the pitch of each note here
     # You may want to use the get_closest_pitch function here
 
