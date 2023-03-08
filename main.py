@@ -2,6 +2,14 @@ import numpy as np
 from pydub import AudioSegment  # reference at bottom
 import csv
 
+def main():
+    filepath = input("Please enter the path to your audio file: ")
+    samples = load_audio_file(filepath)
+    analyzed_data = analyze_audio_file(samples)
+    scores = calculate_accuracy(analyzed_data)
+    print(scores)
+
+
 def load_audio_file(filepath):
     """
     Load audio file from disk and return as numpy array.
@@ -11,12 +19,14 @@ def load_audio_file(filepath):
     samples = np.array(samples)
     return samples
 
+
 def get_closest_pitch(freq):
     """
     Given a frequency, returns the closest note in the key by frequency.
     """
     # Implement your code to find the closest note here
     # You may want to store the frequencies of the notes in the key as a dictionary
+
 
 def analyze_audio_file(samples):
     """
@@ -29,6 +39,7 @@ def analyze_audio_file(samples):
 
     return analyzed_data
 
+
 def calculate_accuracy(analyzed_data):
     """
     Given a list of analyzed data for each note, calculates the accuracy of intonation for each note
@@ -39,12 +50,6 @@ def calculate_accuracy(analyzed_data):
 
     return scores
 
-def main():
-    filepath = input("Please enter the path to your audio file: ")
-    samples = load_audio_file(filepath)
-    analyzed_data = analyze_audio_file(samples)
-    scores = calculate_accuracy(analyzed_data)
-    print(scores)
 
 if __name__ == "__main__":
     main()
