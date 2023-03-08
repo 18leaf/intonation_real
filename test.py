@@ -30,8 +30,7 @@ def load_audio(filepath):
 
     try:
         sound = AudioSegment.from_wav(filepath)
-        samples = sound.get_array_of_samples()
-        samples = np.array(samples)
+        samples = np.array(sound.get_array_of_samples())
     except FileNotFoundError:
         sys.exit(f"ERROR: input.wav not found")
 
