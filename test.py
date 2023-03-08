@@ -24,7 +24,7 @@ def main():
         sys.exit("ERROR: tuning.csv not found")"""
 
     samples = load_audio(filepath)
-    # analyzed_data = analyze_audio(samples)
+    analyzed_data = analyze_audio(samples)
     # scores = calculate_accuracy(analyzed_data)
     # print(scores)
 
