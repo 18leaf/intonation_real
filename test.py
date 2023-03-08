@@ -32,7 +32,7 @@ def load_audio(filepath):
 
     try:
         sound = AudioSegment.from_wav(filepath)
-        global_vars.append({'sample_rate': sound.frame_rate})
+        global_vars.append(sound.frame_rate)
         samples = np.array(sound.get_array_of_samples())
     except FileNotFoundError:
         sys.exit(f"ERROR: input.wav not found")
@@ -58,7 +58,7 @@ def analyze_audio(samples):
     # Given a numpy array of audio samples, analyzes the pitch of each note and returns a
     list of dicts with the analyzed data for each note.
     """
-
+    sample_rate = global_vars[0]
     analyzed_data = []
     # Implement your code to analyze the pitch of each note here
     # You may want to use the get_closest_pitch function here
