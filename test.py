@@ -77,7 +77,7 @@ def analyze_audio(samples):
             "duration": duration,
             "pitch": pitch
         })
-
+    print(analyzed_data)
     return analyzed_data
 
 
