@@ -16,7 +16,6 @@ def main():
         sys.exit("ERROR: tuning.csv not found")
 
     samples = load_audio(filepath)
-    print(samples)
     # analyzed_data = analyze_audio(samples)
     # scores = calculate_accuracy(analyzed_data)
     # print(scores)
@@ -30,7 +29,6 @@ def load_audio(filepath):
     try:
         sound = AudioSegment.from_wav(filepath)
         samples = sound.get_array_of_samples()
-        print(samples[])
         samples = np.array(samples)
     except FileNotFoundError:
         sys.exit(f"ERROR: input.wav not found")
