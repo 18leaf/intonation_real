@@ -59,7 +59,7 @@ def analyze_audio(samples):
     window_size = 2048
     hop_size = 512
     analyzed_data = []
-    for i in range(0, len(samples) - window_size, hop_size)
+    for i in range(0, len(samples) - window_size, hop_size):
         window = samples[i:i+window_size] * np.hamming(window_size)
         autocorr = np.correlate(window, window, mode='full')
         autocorr = autocorr[len(autocorr)//2:]
