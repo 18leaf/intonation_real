@@ -1,5 +1,5 @@
 import numpy as np
-from pydub import AudioSegment
+from pydub import AudioSegment  # reference at bottom
 
 def load_audio_file(filepath):
     """
@@ -47,3 +47,24 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+"""
+pydub:
+
+    AudioSegment.from_wav(filepath): Load a WAV audio file from disk and return as an AudioSegment object.
+    sound.get_array_of_samples(): Return the raw audio samples from an AudioSegment object as an array of integers.
+    AudioSegment.apply_gain(): Apply a gain (amplification) to an AudioSegment object.
+    AudioSegment.export(): Export an AudioSegment object to a WAV file on disk.
+
+
+numpy:
+
+    numpy.array(): Create a numpy array from a list or array-like object.
+    numpy.argmax(): Find the index of the maximum value in a numpy array.
+    numpy.argmin(): Find the index of the minimum value in a numpy array.
+    numpy.abs(): Calculate the absolute value of a numpy array.
+    numpy.sum(): Calculate the sum of the values in a numpy array.
+    numpy.mean(): Calculate the mean (average) value of a numpy array.
+    numpy.std(): Calculate the standard deviation of a numpy array.
+"""
