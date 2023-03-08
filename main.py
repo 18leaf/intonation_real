@@ -1,6 +1,7 @@
 import numpy as np
 from pydub import AudioSegment  # reference at bottom
 import csv
+import sys
 
 def main():
     filepath = input("Please enter the path to your audio file: ")
