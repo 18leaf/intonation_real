@@ -32,7 +32,7 @@ def load_audio(filepath):
         samples = sound.get_array_of_samples()
         samples = np.array(samples)
     except FileNotFoundError:
-        sys.exit(f"ERROR: ")
+        sys.exit(f"ERROR: input.wav not found")
     return samples
 
 
