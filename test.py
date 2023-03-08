@@ -6,7 +6,8 @@ import sys
 def main():
     if len(sys.argv) != 2:
         sys.exit("USAGE: python main.py input.wav")
-    filepath = input("Please enter the path to your audio file: ")
+    filepath = sys.argv[1]
+
     try:
         with open("tuning.csv") as csvfile:
             reader = csv.DictReader(csvfile)
