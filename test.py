@@ -44,4 +44,15 @@ def load_audio(filepath):
     return samples
 
 
+def analyze_audio(samples):
+    """
+    # Given a numpy array of audio samples, analyzes the pitch of each note and returns a list of dicts with the analyzed data for each note.
+    """
+    analyzed_data = []
+    # Implement your code to analyze the pitch of each note here
+    # You may want to use the get_closest_pitch function here
+
+    return analyzed_data
+
+
 main()
