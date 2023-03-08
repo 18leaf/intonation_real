@@ -13,7 +13,7 @@ def main():
             reader = csv.DictReader(csvfile)
             tuning = {row['Note']: float(row['Frequency']) for row in reader} # create dictionary for all correct note values.. {"Note name": frequency}
     except FileNotFoundError:
-        sys.exit("tuning.csv not found")
+        sys.exit("ERROR: tuning.csv not found")
 
     samples = load_audio(filepath)
     print(samples)
