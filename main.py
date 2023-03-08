@@ -10,6 +10,7 @@ def main():
         with open("tuning.csv") as csvfile:
             reader = csv.DictReader(csvfile)
         for row in reader:
+            tuning = {row['Note']: float(row['Frequency'])}
             tuning[row['Note']] = float(row['Frequency'])
     except FileNotFoundError:
         sys.exit("tuning.csv not found")
