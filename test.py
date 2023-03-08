@@ -19,8 +19,8 @@ def main():
 
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
-    # scores = calculate_accuracy(analyzed_data)
-    # print(scores)
+    scores = calculate_accuracy(analyzed_data)
+    print(scores)
 
 
 def load_audio(filepath):
@@ -76,6 +76,16 @@ def analyze_audio(samples):
         })
 
     return analyzed_data
+
+
+def calculate_accuracy(analyzed_data):
+    """
+    # Given a list of analyzed data for each note, calculates the accuracy of intonation for each note and returns a dict with the scores for each note.
+    """
+    scores = {}
+    # Implement your code to calculate the accuracy of intonation for each note here
+
+    return scores
 
 
 main()
