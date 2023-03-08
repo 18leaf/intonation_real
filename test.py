@@ -60,8 +60,20 @@ def analyze_audio(samples):
     hop_size = 512
     analyzed_data = []
     for i in range(0, len(samples) - window_size, hop_size)
-    # Implement your code to analyze the pitch of each note here
-    # You may want to use the get_closest_pitch function here
+        window = samples[i:i+window_size] * np.hamming(window_size)
+        autocorr = np.correlate(window, window, mode='full')
+        autocorr = autocorr[len(autocorr)//2:]
+        freqs = np.arange(0, sample_rate/2, sample_rate/len(autocorr))
+        pitch = freqs[np.argmax(autocorr)]
+        note = get_closest_pitch(pitch)
+        start_time = i / sample_rate
+        duration = window_size / sample_rate
+        analyzed_data.append({
+            "note": note,
+            "start_time": start_time,
+            "duration": duration,
+            "pitch": pitch
+        })
 
     return analyzed_data
 
