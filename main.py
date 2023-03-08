@@ -5,6 +5,7 @@ import sys
 
 def main():
     filepath = input("Please enter the path to your audio file: ")
+    tuning = [] # create list of 
     samples = load_audio_file(filepath)
     analyzed_data = analyze_audio_file(samples)
     scores = calculate_accuracy(analyzed_data)
