@@ -43,7 +43,7 @@ def get_closest_pitch(freq):
 
     closest_note = ""
     min_distance = float("inf")
-    for 
+    for Note, Frequency in tuning.items()
     # Implement your code to find the closest note here
     # You may want to store the frequencies of the notes in the key as a dictionary
 
