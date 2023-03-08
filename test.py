@@ -3,7 +3,7 @@ from pydub import AudioSegment  # reference at bottom
 import csv
 import sys
 
-def main(sys.argv):
+def main():
     if len(sys.argv) != 2:
         sys.exit("USAGE: python main.py input.wav")
         exit(1)
