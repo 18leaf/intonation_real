@@ -7,6 +7,11 @@ def main():
     filepath = input("Please enter the path to your audio file: ")
     tuning = {} # create dictionary for all correct note values.. {"Note name": frequency}
     try open("tuning.csv") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            tuning.append()
+    except FileNotFoundError:
+        sys.exit("tuning.csv not found")
 
     samples = load_audio_file(filepath)
     analyzed_data = analyze_audio_file(samples)
