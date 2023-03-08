@@ -46,7 +46,8 @@ def load_audio(filepath):
 
 def analyze_audio(samples):
     """
-    # Given a numpy array of audio samples, analyzes the pitch of each note and returns a list of dicts with the analyzed data for each note.
+    # Given a numpy array of audio samples, analyzes the pitch of each note and returns a
+    list of dicts with the analyzed data for each note.
     """
     analyzed_data = []
     # Implement your code to analyze the pitch of each note here
