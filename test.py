@@ -36,6 +36,15 @@ def load_audio(filepath):
 
     return samples
 
+def get_closest_pitch(freq):
+    """
+    # Given a frequency, returns the closest note in the key by frequency.
+    """
+
+    closest_note = ""
+    # Implement your code to find the closest note here
+    # You may want to store the frequencies of the notes in the key as a dictionary
+
 
 def analyze_audio(samples):
     """
