@@ -55,7 +55,7 @@ def analyze_audio(samples):
     # Given a numpy array of audio samples, analyzes the pitch of each note and returns a
     list of dicts with the analyzed data for each note.
     """
-    sample_rate = 41000
+    sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
     window_size = 2048
     hop_size = 512
     analyzed_data = []
