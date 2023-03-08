@@ -47,7 +47,7 @@ def load_audio(filepath):
 
     # Compare the two arrays and print the pitch of A4 in the chromatic scale
     print(f"The pitch of A4 in the chromatic scale is {A4_pitch:.2f} Hz")
-
+    print(tuning['A4'])
 
     return samples
 
