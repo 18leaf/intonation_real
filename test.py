@@ -46,10 +46,7 @@ def load_audio(filepath):
     A4_pitch = tuning['A4'] * 2 ** ((20 * np.log10(A4_rms / (2 ** 15))) / 60)
 
     # Compare the two arrays and print the pitch of A4 in the chromatic scale
-    if np.allclose(A4_samples, sound[int(sound.duration_seconds / 2) * sound.frame_rate : int(sound.duration_seconds / 2) * sound.frame_rate + sound.frame_rate].get_array_of_samples()):
-        print(f"The pitch of A4 in the chromatic scale is {A4_pitch:.2f} Hz")
-    else:
-        print("The chromatic scale does not contain the note A4")
+    print(f"The pitch of A4 in the chromatic scale is {A4_pitch:.2f} Hz")
 
 
     return samples
