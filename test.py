@@ -40,12 +40,14 @@ def get_closest_pitch(freq):
     """
     # Given a frequency, returns the closest note in the key by frequency.
     """
-
     closest_note = ""
-    min_distance = float("inf")
-    for Note, Frequency in tuning.items()
-    # Implement your code to find the closest note here
-    # You may want to store the frequencies of the notes in the key as a dictionary
+    min_distance = float("inf") # set min distance to infinity, so all distance are less
+    for Note, Frequency in tuning.items(): # itereate of each item in the tuning dict created from csv
+         distance = abs(freq - Frequency) # distance is given pitch(found later in analyze audio) from csv tunign
+         if distance < min_distance: # pseudo sort to find closest note to actual pitch
+              min_distance = distance
+              closest_note = Note
+    return closest_note
 
 
 def analyze_audio(samples):
