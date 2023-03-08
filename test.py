@@ -19,8 +19,11 @@ def main():
 
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
-    scores = calculate_accuracy(analyzed_data)
-    print(scores)
+    note_scores, overall_score = calculate_accuracy(analyzed_data)
+    print("Per-note accuracy scores:")
+    print(note_scores)
+    print("Overall accuracy score:")
+    print(overall_score)
 
 
 def load_audio(filepath):
@@ -83,6 +86,8 @@ def calculate_accuracy(analyzed_data):
     # Given a list of analyzed data for each note, calculates the accuracy of intonation for each note and returns a dict with the scores for each note.
     """
     scores = {}
+    total_accuracy = 0.0
+    num_notes = 0
     for note, freq in tuning.items():
         # Filter the analyzed data to only include the current note
         notes_data = [d for d in analyzed_data if d["note"] == note]
@@ -94,9 +99,11 @@ def calculate_accuracy(analyzed_data):
         # Compute the accuracy score as a percentage
         accuracy = max(0, 1 - mean_deviation / (freq * 0.01))
         scores[note] = accuracy
-    # Implement your code to calculate the accuracy of intonation for each note here
+        total_accuracy += accuracy
+        num_notes += 1
+    overall_accuracy = total_accuracy / num_notes
 
-    return scores
+    return scores, overall_accuracy
 
 
 main()
