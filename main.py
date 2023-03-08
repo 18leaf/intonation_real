@@ -11,7 +11,6 @@ def main():
             tuning = {row['Note']: float(row['Frequency']) for row in reader} # create dictionary for all correct note values.. {"Note name": frequency}
     except FileNotFoundError:
         sys.exit("tuning.csv not found")
-    print(tuning)
     # samples = load_audio_file(filepath)
     # analyzed_data = analyze_audio_file(samples)
     # scores = calculate_accuracy(analyzed_data)
