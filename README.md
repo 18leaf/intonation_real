@@ -1,6 +1,10 @@
 # intonation_real
 scores user intonation
 
+USAGE - python main.py input.wav
+
+
+
 
 1.   load_audio_file(filepath):
         Use the pydub.AudioSegment.from_wav() function to load the audio file from disk and convert it to an AudioSegment object.
