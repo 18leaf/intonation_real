@@ -1,0 +1,7 @@
+{
+    "gitdoc.enabled": true,
+    "files.associations": {
+        "cmath": "c",
+        "*.tcc": "c"
+    }
+}
