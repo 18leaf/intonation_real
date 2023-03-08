@@ -14,14 +14,8 @@ except FileNotFoundError:
 def main():
     if len(sys.argv) != 2:
         sys.exit("USAGE: python main.py input.wav")
-    filepath = sys.argv[1]
 
-    """try:
-        with open("tuning.csv") as csvfile:
-            reader = csv.DictReader(csvfile)
-            tuning = {row['Note']: float(row['Frequency']) for row in reader} # create dictionary for all correct note values.. {"Note name": frequency}
-    except FileNotFoundError:
-        sys.exit("ERROR: tuning.csv not found")"""
+    filepath = sys.argv[1]
 
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
