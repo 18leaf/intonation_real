@@ -138,8 +138,11 @@ def calculate_accuracy(analyzed_data):
 
 def calculate_mse(analyzed_data):
      mse_scores = {}
-     for i in len(analyzed_data):
-          tuning[i]
+     for note, freq in tuning.items():
+          notedata = [d for d in analyzed_data if d["note"] == note]
+          if len(notedata) == 0:
+               continue
+          
 
 if __name__ == "__main__":
     main()
