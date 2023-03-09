@@ -125,7 +125,6 @@ def calculate_accuracy(analyzed_data):
         notes_data = [d for d in analyzed_data if d["note"] == note]
         if len(notes_data) == 0:
             continue
-        print(notes_data)
         # Compute the mean pitch deviation from the correct frequency
         deviations = [abs(d["pitch"] - freq) for d in notes_data]
         mean_deviation = np.mean(deviations)
