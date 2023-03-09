@@ -58,7 +58,7 @@ def analyze_audio(samples):
     # Given a numpy array of audio samples, analyzes the pitch of each note and returns a
     list of dicts with the analyzed data for each note.
     """
-    sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
+    """sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate    # following uses autocorrelation for audio
     print(sample_rate)
     window_size = 2048
     hop_size = 512
@@ -77,7 +77,36 @@ def analyze_audio(samples):
             "start_time": start_time,
             "duration": duration,
             "pitch": pitch
+        })"""
+
+
+    sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
+    window_size = 2048
+    hop_size = 256
+    analyzed_data = []
+
+    for i in range(0, len(samples) - window_size, hop_size):
+        window = samples[i:i+window_size] * np.hamming(window_size)
+        # Apply FFT to the window
+        spectrum = np.abs(np.fft.fft(window))
+        # Get the frequency values of the spectrum
+        freqs = np.fft.fftfreq(window_size, d=1/sample_rate)[:window_size//2]
+        # Find the index of the peak frequency
+        peak_index = np.argmax(spectrum[:window_size//2])
+        # Convert the index to a pitch value in Hz
+        pitch = freqs[peak_index]
+        # Find the closest pitch name to the calculated pitch value
+        note = get_closest_pitch(pitch)
+        start_time = i / sample_rate
+        duration = window_size / sample_rate
+        analyzed_data.append({
+            "note": note,
+            "start_time": start_time,
+            "duration": duration,
+            "pitch": pitch
         })
+
+
     # print(analyzed_data)
     return analyzed_data
 
