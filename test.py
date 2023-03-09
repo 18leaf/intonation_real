@@ -138,8 +138,8 @@ def calculate_mse(analyzed_data):
         notedata = [d for d in analyzed_data if d["note"] == note]
         if len(notedata) == 0:
              continue
-        raw[note] = ((d["pitch"] - freq) / freq for d in notedata)
-        mse_scores[note] = abs(raw[note]) * 100
+        raw[note] = (abs(d["pitch"] - freq) for d in notedata)
+        mse_scores[note] = raw[note] / freq * 100
 
     return mse_scores
 
