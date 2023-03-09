@@ -59,6 +59,7 @@ def analyze_audio(samples):
     list of dicts with the analyzed data for each note.
     """
     sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
+    print(sample_rate)
     window_size = 2048
     hop_size = 512
     analyzed_data = []
