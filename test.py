@@ -106,4 +106,5 @@ def calculate_accuracy(analyzed_data):
     return scores, overall_accuracy
 
 
-main()
+if __name__ == "__main__":
+    main()
