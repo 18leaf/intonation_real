@@ -136,5 +136,9 @@ def calculate_accuracy(analyzed_data):
     return scores, overall_accuracy
 
 
+def calculate_mse(analyzed_data):
+     mse_scores = {}
+     
+
 if __name__ == "__main__":
     main()
