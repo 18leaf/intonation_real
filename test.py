@@ -80,7 +80,7 @@ def analyze_audio(samples):
         })"""
 
 
-    sample_rate = AudioSegment.from_wav(sys.argv[1]).fra
+    sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
     window_size = 2048
     hop_size = 256
     analyzed_data = []
