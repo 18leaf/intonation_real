@@ -133,13 +133,16 @@ def calculate_accuracy(analyzed_data):
 
 def calculate_mse(analyzed_data):
     mse_scores = {}
-    raw = {}
     for note, freq in tuning.items():
         notedata = [d for d in analyzed_data if d["note"] == note]
         if len(notedata) == 0:
-             continue
-        raw[note] = (abs(d["pitch"] - freq) for d in notedata)
-        mse_scores[note] = raw[note] / freq * 100
+            # If there is no analyzed data for the current note, skip it
+            continue
+        # Calculate the squared error between the analyzed pitch values and the expected frequency
+        squared_errors = [(d["pitch"] - freq)**2 for d in notedata]
+        # Calculate the MSE by dividing the sum of squared errors by the number of analyzed data points
+        mse = sum(squared_errors) / len(notedata)
+        mse_scores[note] = mse
 
     return mse_scores
 
