@@ -20,10 +20,12 @@ def main():
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
     note_scores, overall_score = calculate_accuracy(analyzed_data)
+    mse = calculate_mse(analyzed_data)
     print("Per-note accuracy scores:")
     print(note_scores)
     print("Overall accuracy score:")
     print(overall_score)
+    print(f"MSEcalc = {mse}")
 
 
 def load_audio(filepath):
@@ -123,6 +125,7 @@ def calculate_accuracy(analyzed_data):
         notes_data = [d for d in analyzed_data if d["note"] == note]
         if len(notes_data) == 0:
             continue
+        print(notes_data)
         # Compute the mean pitch deviation from the correct frequency
         deviations = [abs(d["pitch"] - freq) for d in notes_data]
         mean_deviation = np.mean(deviations)
@@ -142,7 +145,8 @@ def calculate_mse(analyzed_data):
           notedata = [d for d in analyzed_data if d["note"] == note]
           if len(notedata) == 0:
                continue
-          
+          mse_scores[0] = abs(1)
+
 
 if __name__ == "__main__":
     main()
