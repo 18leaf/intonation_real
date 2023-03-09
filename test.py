@@ -118,8 +118,6 @@ def calculate_accuracy(analyzed_data):
     # Given a list of analyzed data for each note, calculates the accuracy of intonation for each note and returns a dict with the scores for each note.
     """
     scores = {}
-    total_accuracy = 0.0
-    num_notes = 0
     for note, freq in tuning.items():
         # Filter the analyzed data to only include the current note
         notes_data = [d for d in analyzed_data if d["note"] == note]
@@ -131,21 +129,19 @@ def calculate_accuracy(analyzed_data):
         # Compute the accuracy score as a percentage
         accuracy = max(0, 1 - mean_deviation / (freq * 0.01))
         scores[note] = accuracy
-        total_accuracy += accuracy
-        num_notes += 1
-    overall_accuracy = total_accuracy / num_notes
 
-    return scores, overall_accuracy
+    return scores
 
 
 def calculate_mse(analyzed_data):
-     mse_scores = {}
-     for note, freq in tuning.items():
-          notedata = [d for d in analyzed_data if d["note"] == note]
-          if len(notedata) == 0:
-               continue
-          mse_scores[0] = abs(1)
+    mse_scores = {}
+    for note, freq in tuning.items():
+        notedata = [d for d in analyzed_data if d["note"] == note]
+        if len(notedata) == 0:
+             continue
+        mse_scores[note] = abs(((d["pitch"] - freq) / freq)for d in notedata) * 100
 
+    return mse_scores
 
 if __name__ == "__main__":
     main()
