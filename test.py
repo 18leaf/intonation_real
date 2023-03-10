@@ -25,7 +25,12 @@ def main():
     # print("Per-note accuracy scores:")
     # print(note_scores)
     # print(f"MSEcalc = {mse}")
-    print(f"Percent Error = {pererror}")
+    # print(f"Percent Error = {pererror}")
+    print(f"\nIntonation Score for {filepath}\n")
+    for note in pererror:
+        if pererror[note] == 100:
+            continue
+        print(f"{note} - {100 - pererror[note]}%")
 
 
 def load_audio(filepath):
