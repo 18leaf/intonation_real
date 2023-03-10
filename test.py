@@ -21,9 +21,11 @@ def main():
     analyzed_data = analyze_audio(samples)
     note_scores = calculate_accuracy(analyzed_data)
     mse = calculate_mse(analyzed_data)
+    pererror = calculate_percent_error(analyzed_data)
     print("Per-note accuracy scores:")
     print(note_scores)
     print(f"MSEcalc = {mse}")
+    print(f"Percent Error = {pererror}")
 
 
 def load_audio(filepath):
@@ -147,20 +149,22 @@ def calculate_mse(analyzed_data):
     return mse_scores
 
 
-def calc3(analyzed_data):
-    mse_score = {}
-    notedata = [d for d in analyzed_data if d["note"] == note]
-    if len(notedata) == 0:
-        # If there is no analyzed data for the current note, skip it
-        continue
-    # Calculate the average pitch value for the current note
-    pitch_values = [d["pitch"] for d in notedata]
-    mean_pitch = np.mean(pitch_values)
-    # Calculate the squared error between each pitch value and the expected frequency
-    squared_errors = [(pitch - freq)**2 for pitch in pitch_values]
-    # Calculate the MSE by dividing the sum of squared errors by the number of analyzed data points
-    mse = sum(squared_errors) / len(notedata)
-    mse_score[note] = mse
+def calculate_percent_error(analyzed_data):
+    error_scores = {}
+    for note, freq in tuning.items():
+        notedata = [d for d in analyzed_data if d["note"] == note]
+        if len(notedata) == 0:
+            # If there is no analyzed data for the current note, skip it
+            continue
+        # Calculate the mean pitch value for the current note
+        pitch_values = [d["pitch"] for d in notedata]
+        mean_pitch = sum(pitch_values) / len(pitch_values)
+        # Calculate the percent error between the mean pitch value and the expected frequency
+        percent_error = abs((mean_pitch - freq) / freq) * 100
+        error_scores[note] = percent_error
+
+    return error_scores
+
 
 if __name__ == "__main__":
     main()
