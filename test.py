@@ -28,9 +28,9 @@ def main():
     # print(f"Percent Error = {pererror}")
     print(f"\nIntonation Score for {filepath}\n")
     for note in pererror:
-        if pererror[note] == 100:
+        if pererror[note] < 100:
             continue
-        print(f"{note} - {round((100 - pererror[note]), 2)}%")
+        print(f"{note} - {round((pererror[note]), 2)}%")
 
 
 def load_audio(filepath):
@@ -50,7 +50,7 @@ def get_closest_pitch(freq):
     """
     # Given a frequency, returns the closest note in the key by frequency.
     """
-    
+
     closest_note = ""
     min_distance = float("inf") # set min distance to infinity, so all distance are less
     for Note, Frequency in tuning.items(): # itereate of each item in the tuning dict created from csv
@@ -109,7 +109,7 @@ def calculate_percent_error(analyzed_data):
         mean_pitch = sum(pitch_values) / len(pitch_values)
         # Calculate the percent error between the mean pitch value and the expected frequency
         percent_error = abs((mean_pitch - freq) / freq) * 100
-        error_scores[note] = percent_error
+        error_scores[note] = 100 - percent_error
 
     return error_scores
 
