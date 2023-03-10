@@ -33,8 +33,9 @@ def main():
         if pererror[note] < 20:
             continue
         print(f"{note} - {round((pererror[note]), 2)}%")
-        choice = input("More Info(Y/N)? ")
-        if choice.lower() in ['y', 'yes']:
+    choice = input("More Info(Y/N)? ")
+    if choice.lower() in ['y', 'yes']:
+        for note in notecount:
             print(f"{note} - {notecount[note]} samples")
 
 
