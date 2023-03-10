@@ -118,42 +118,6 @@ def analyze_audio(samples):
     return analyzed_data
 
 
-def calculate_accuracy(analyzed_data):
-    """
-    # Given a list of analyzed data for each note, calculates the accuracy of intonation for each note and returns a dict with the scores for each note.
-    """
-    scores = {}
-    for note, freq in tuning.items():
-        # Filter the analyzed data to only include the current note
-        notes_data = [d for d in analyzed_data if d["note"] == note]
-        if len(notes_data) == 0:
-            continue
-        # Compute the mean pitch deviation from the correct frequency
-        deviations = [abs(d["pitch"] - freq) for d in notes_data]
-        mean_deviation = np.mean(deviations)
-        # Compute the accuracy score as a percentage
-        accuracy = max(0, 1 - mean_deviation / (freq * 0.01))
-        scores[note] = accuracy
-
-    return scores
-
-
-def calculate_mse(analyzed_data):
-    mse_scores = {}
-    for note, freq in tuning.items():
-        notedata = [d for d in analyzed_data if d["note"] == note]
-        if len(notedata) == 0:
-            # If there is no analyzed data for the current note, skip it
-            continue
-        # Calculate the squared error between the analyzed pitch values and the expected frequency
-        squared_errors = [(d["pitch"] - freq)**2 for d in notedata]
-        # Calculate the MSE by dividing the sum of squared errors by the number of analyzed data points
-        mse = sum(squared_errors) / len(notedata)
-        mse_scores[note] = mse
-
-    return mse_scores
-
-
 def calculate_percent_error(analyzed_data):
     error_scores = {}
     for note, freq in tuning.items():
