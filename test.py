@@ -30,7 +30,7 @@ def main():
     for note in pererror:
         if pererror[note] == 100:
             continue
-        print(f"{note} - {100 - pererror[note]}%")
+        print(f"{note} - {round((100 - pererror[note]), 2)}%")
 
 
 def load_audio(filepath):
