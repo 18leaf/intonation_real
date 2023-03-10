@@ -38,8 +38,8 @@ def main():
     if choice.lower() in ['y', 'yes']:
         for note in notecount:
             sample += notecount[note]
-            print(f"{note} - {notecount[note]} samples")
-        print(f"{sample} total samples")
+            print(f"{note} - {notecount[note]: .2f} samples")
+        print(f"{sample: .2f} total samples")
 
 def load_audio(filepath):
     """
