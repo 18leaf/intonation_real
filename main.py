@@ -103,9 +103,9 @@ def analyze_audio(samples):
         })
 
         if note in notecount:
-             notecount[note] += 1
+             notecount[note] += duration
         else:
-             notecount[note] = 1
+             notecount[note] = duration
 
     return analyzed_data
 
