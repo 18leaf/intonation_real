@@ -19,12 +19,12 @@ def main():
 
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
-    note_scores = calculate_accuracy(analyzed_data)
-    mse = calculate_mse(analyzed_data)
+    # note_scores = calculate_accuracy(analyzed_data)
+    # mse = calculate_mse(analyzed_data)
     pererror = calculate_percent_error(analyzed_data)
-    print("Per-note accuracy scores:")
-    print(note_scores)
-    print(f"MSEcalc = {mse}")
+    # print("Per-note accuracy scores:")
+    # print(note_scores)
+    # print(f"MSEcalc = {mse}")
     print(f"Percent Error = {pererror}")
 
 
