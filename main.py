@@ -21,13 +21,7 @@ def main():
 
     samples = load_audio(filepath)
     analyzed_data = analyze_audio(samples)
-    # note_scores = calculate_accuracy(analyzed_data)
-    # mse = calculate_mse(analyzed_data)
     pererror = calculate_percent_error(analyzed_data)
-    # print("Per-note accuracy scores:")
-    # print(note_scores)
-    # print(f"MSEcalc = {mse}")
-    # print(f"Percent Error = {pererror}")
     print(f"\nIntonation Score(s) for {filepath}\n")
     for note in pererror:
         if pererror[note] < 20:
@@ -38,6 +32,7 @@ def main():
             print(f"\033[33m{note} - {round((pererror[note]), 2)}%\033[0m]")
         else:
             print(f"\033[32m{note} - {round((pererror[note]), 2)}%\033[0m")
+
     choice = input("\nMore Info(Y/N)? ")
     if choice.lower() in ['y', 'yes']:
         for note in notecount:
@@ -66,7 +61,7 @@ def get_closest_pitch(freq):
     min_distance = float("inf") # set min distance to infinity, so all distance are less
     for Note, Frequency in tuning.items(): # itereate of each item in the tuning dict created from csv
          distance = abs(freq - Frequency) # distance is given pitch(found later in analyze audio) from csv tunign
-         if distance < min_distance: # pseudo sort to find closest note to actual pitch
+         if distance < min_distance: # "sort" to find closest note to actual pitch
               min_distance = distance
               closest_note = Note
 
@@ -117,8 +112,7 @@ def calculate_percent_error(analyzed_data):   # PROBLEM - DATA SKEWED.... percen
     error_scores = {}
     for note, freq in tuning.items():
         notedata = [d for d in analyzed_data if d["note"] == note]
-        if len(notedata) == 0:
-            # If there is no analyzed data for the current note, skip it
+        if len(notedata) == 0: # check for data of note
             continue
         # Calculate the mean pitch value for the current note
         pitch_values = [d["pitch"] for d in notedata]
