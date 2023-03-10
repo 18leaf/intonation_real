@@ -27,19 +27,19 @@ def main():
         if pererror[note] < 20:
             continue
         if pererror[note] < 75:
-            print(f"\033[31m{note} - {round((pererror[note]), 2)}%[0m")
+            print(f"\033[31m{note} - {pererror[note]: .2f}%[0m")
         elif pererror[note] < 90:
-            print(f"\033[33m{note} - {round((pererror[note]), 2)}%\033[0m]")
+            print(f"\033[33m{note} - {pererror[note]: .2f}%\033[0m]")
         else:
-            print(f"\033[32m{note} - {round((pererror[note]), 2)}%\033[0m")
+            print(f"\033[32m{note} - {pererror[note]: .2f}%\033[0m")
 
     choice = input("\nMore Info(Y/N)? ")
     sample = 0
     if choice.lower() in ['y', 'yes']:
         for note in notecount:
             sample += notecount[note]
-            print(f"{note} - {notecount[note]: .2f} samples")
-        print(f"{sample: .2f} total samples")
+            print(f"{note} - {notecount[note]} samples")
+        print(f"{sample} total samples")
 
 def load_audio(filepath):
     """
@@ -103,9 +103,9 @@ def analyze_audio(samples):
         })
 
         if note in notecount:
-             notecount[note] += duration
+             notecount[note] += 1
         else:
-             notecount[note] = duration
+             notecount[note] = 1
 
     return analyzed_data
 
