@@ -50,6 +50,7 @@ def get_closest_pitch(freq):
     """
     # Given a frequency, returns the closest note in the key by frequency.
     """
+    
     closest_note = ""
     min_distance = float("inf") # set min distance to infinity, so all distance are less
     for Note, Frequency in tuning.items(): # itereate of each item in the tuning dict created from csv
@@ -57,6 +58,7 @@ def get_closest_pitch(freq):
          if distance < min_distance: # pseudo sort to find closest note to actual pitch
               min_distance = distance
               closest_note = Note
+
     return closest_note
 
 
@@ -65,27 +67,6 @@ def analyze_audio(samples):
     # Given a numpy array of audio samples, analyzes the pitch of each note and returns a
     list of dicts with the analyzed data for each note.
     """
-    """sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate    # following uses autocorrelation for audio
-    print(sample_rate)
-    window_size = 2048
-    hop_size = 512
-    analyzed_data = []
-    for i in range(0, len(samples) - window_size, hop_size):
-        window = samples[i:i+window_size] * np.hamming(window_size)
-        autocorr = np.correlate(window, window, mode='full')
-        autocorr = autocorr[len(autocorr)//2:]
-        freqs = np.arange(0, sample_rate/2, sample_rate/len(autocorr))
-        pitch = freqs[np.argmax(autocorr)]
-        note = get_closest_pitch(pitch)
-        start_time = i / sample_rate
-        duration = window_size / sample_rate
-        analyzed_data.append({
-            "note": note,
-            "start_time": start_time,
-            "duration": duration,
-            "pitch": pitch
-        })"""
-
 
     sample_rate = AudioSegment.from_wav(sys.argv[1]).frame_rate
     window_size = 4096
@@ -113,8 +94,6 @@ def analyze_audio(samples):
             "pitch": pitch
         })
 
-
-    # print(analyzed_data)
     return analyzed_data
 
 
