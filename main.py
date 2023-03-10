@@ -27,9 +27,9 @@ def main():
         if pererror[note] < 20:
             continue
         if pererror[note] < 75:
-            print(f"\033[31m{note} - {pererror[note]: .2f}%[0m")
+            print(f"\033[31m{note: <3} - {pererror[note]: .2f}%[0m")
         elif pererror[note] < 90:
-            print(f"\033[33m{note} - {pererror[note]: .2f}%\033[0m]")
+            print(f"\033[33m{note} - {pererror[note]: .2f}%\033[0m")
         else:
             print(f"\033[32m{note} - {pererror[note]: .2f}%\033[0m")
 
