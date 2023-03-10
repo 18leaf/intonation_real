@@ -10,6 +10,8 @@ try:
 except FileNotFoundError:
         sys.exit("ERROR: tuning.csv not found")
 
+notecount = {}
+
 
 def main():
     if len(sys.argv) != 2:
@@ -31,6 +33,7 @@ def main():
         if pererror[note] < 20:
             continue
         print(f"{note} - {round((pererror[note]), 2)}%")
+    
 
 
 def load_audio(filepath):
@@ -72,7 +75,6 @@ def analyze_audio(samples):
     window_size = 4096
     hop_size = 256
     analyzed_data = []
-    note_count = {}
 
     for i in range(0, len(samples) - window_size, hop_size):
         window = samples[i:i+window_size] * np.hamming(window_size)
@@ -94,6 +96,11 @@ def analyze_audio(samples):
             "duration": duration,
             "pitch": pitch
         })
+
+        if note in notecount:
+             notecount[note] += 1
+        else:
+             notecount[note] = 1
 
     return analyzed_data
 
