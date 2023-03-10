@@ -146,5 +146,21 @@ def calculate_mse(analyzed_data):
 
     return mse_scores
 
+
+def calc3(analyzed_data):
+    mse_score = {}
+    notedata = [d for d in analyzed_data if d["note"] == note]
+    if len(notedata) == 0:
+        # If there is no analyzed data for the current note, skip it
+        continue
+    # Calculate the average pitch value for the current note
+    pitch_values = [d["pitch"] for d in notedata]
+    mean_pitch = np.mean(pitch_values)
+    # Calculate the squared error between each pitch value and the expected frequency
+    squared_errors = [(pitch - freq)**2 for pitch in pitch_values]
+    # Calculate the MSE by dividing the sum of squared errors by the number of analyzed data points
+    mse = sum(squared_errors) / len(notedata)
+    mse_score[note] = mse
+
 if __name__ == "__main__":
     main()
