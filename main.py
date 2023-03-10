@@ -72,6 +72,7 @@ def analyze_audio(samples):
     window_size = 4096
     hop_size = 256
     analyzed_data = []
+    note_count = {}
 
     for i in range(0, len(samples) - window_size, hop_size):
         window = samples[i:i+window_size] * np.hamming(window_size)
