@@ -28,12 +28,14 @@ def main():
     # print(note_scores)
     # print(f"MSEcalc = {mse}")
     # print(f"Percent Error = {pererror}")
-    print(f"\nIntonation Score for {filepath}\n")
+    print(f"\nIntonation Score(s) for {filepath}\n")
     for note in pererror:
         if pererror[note] < 20:
             continue
         print(f"{note} - {round((pererror[note]), 2)}%")
-    
+        choice = input("More Info(Y/N)? ")
+        if choice.lower() in ['y', 'yes']:
+            print(f"{note} - {notecount[note]} samples")
 
 
 def load_audio(filepath):
