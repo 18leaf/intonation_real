@@ -33,11 +33,11 @@ def main():
         if pererror[note] < 20:
             continue
         if pererror[note] < 75:
-            print(f"{note} - {round((pererror[note]), 2)}%")
+            print(f"\033[31m{note} - {round((pererror[note]), 2)}%[0m")
         elif pererror[note] < 90:
-            print(f"{note} - {round((pererror[note]), 2)}%")
+            print(f"\033[33m{note} - {round((pererror[note]), 2)}%\033[0m]")
         else:
-            print(f"{note} - {round((pererror[note]), 2)}%")
+            print(f"\033[32m{note} - {round((pererror[note]), 2)}%\033[0m")
     choice = input("\nMore Info(Y/N)? ")
     if choice.lower() in ['y', 'yes']:
         for note in notecount:
