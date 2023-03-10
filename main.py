@@ -34,10 +34,12 @@ def main():
             print(f"\033[32m{note} - {round((pererror[note]), 2)}%\033[0m")
 
     choice = input("\nMore Info(Y/N)? ")
+    sample = 0
     if choice.lower() in ['y', 'yes']:
         for note in notecount:
+            sample += notecount[note]
             print(f"{note} - {notecount[note]} samples")
-
+        print(f"{sample} total samples")
 
 def load_audio(filepath):
     """
