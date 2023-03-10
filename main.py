@@ -97,7 +97,7 @@ def analyze_audio(samples):
     return analyzed_data
 
 
-def calculate_percent_error(analyzed_data):
+def calculate_percent_error(analyzed_data):   # PROBLEM - DATA SKEWED.... percent error is not correct statistical analysis for intonation, as it is not scaled evenly between notes.... 100% error should mean that the note is halfway to the next halfstep, not distance away, as certain p% error means that the not is only far away, in which getclosest pitch already scales... also higher pitches will have more room for error as Hz is what is measured, so it the difference changes as Hz to note val are not linear
     error_scores = {}
     for note, freq in tuning.items():
         notedata = [d for d in analyzed_data if d["note"] == note]
