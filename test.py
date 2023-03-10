@@ -28,7 +28,7 @@ def main():
     # print(f"Percent Error = {pererror}")
     print(f"\nIntonation Score for {filepath}\n")
     for note in pererror:
-        if pererror[note] < 100:
+        if pererror[note] < 20:
             continue
         print(f"{note} - {round((pererror[note]), 2)}%")
 
